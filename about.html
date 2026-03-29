@@ -1,22 +1,21 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>О мастерской | У попи</title>
-  <meta name="description" content="О мастерской У попи: принципы работы, гарантия, прозрачная смета и техническая дисциплина." />
+  <title>О мастерской | Бокс 125</title>
+  <meta name="description" content="О мастерской Бокс 125: принципы работы, гарантия, прозрачная смета и техническая дисциплина." />
   <meta name="robots" content="index,follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="body-bg"></div>
   <header class="nav">
-    <div class="logo">У попи</div>
+    <a href="index.html" class="logo"><span class="logo-text">Бокс <span class="logo-accent">125</span></span></a>
     <nav>
-      <a href="index.html">Главная</a>
       <a href="work.html">Услуги</a>
       <a href="about.html" class="active">О мастерской</a>
       <a href="testimonials.html">Отзывы</a>
@@ -26,7 +25,7 @@
 
   <main class="section" style="padding-top: 110px;">
     <div class="panel reveal in-view">
-      <h2>О мастерской «У попи»</h2>
+      <h2>О мастерской «Бокс 125»</h2>
       <p>Мы строим сервис по стандартам сильных мировых автосервисов: точный входной контроль, ясные объяснения и только обоснованные работы.</p>
       <p>Работаем с японскими, корейскими и европейскими автомобилями. Каждая машина проходит цикл: диагностика, согласование, ремонт, контрольный тест, выдача отчета.</p>
       <div class="badge-list">
@@ -40,14 +39,17 @@
       <h2>Принципы работы</h2>
       <div class="grid">
         <article class="card">
+          <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>
           <h3>Честная смета</h3>
           <p>Сначала диагностика и согласование, потом ремонт. Без скрытых позиций.</p>
         </article>
         <article class="card">
+          <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
           <h3>Техническая дисциплина</h3>
           <p>Соблюдаем регламенты производителей и контролируем каждый этап.</p>
         </article>
         <article class="card">
+          <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           <h3>Ответственность</h3>
           <p>Выдаем гарантию на выполненные работы и сопровождаем после ремонта.</p>
         </article>
@@ -59,7 +61,20 @@
     </div>
   </main>
 
-  <footer class="footer">© Автомастерская «У попи», г. Владивосток, ул. Луговая, д. 74</footer>
+  <footer class="footer">
+    <div class="footer-top">© 2024–2026 Автомастерская «Бокс 125» (ИП Фамилия И.&nbsp;О. ИНН&nbsp;XXXXXXXXXX)</div>
+    <div class="footer-bottom">
+      <a href="privacy.html">Политика конфиденциальности</a>
+      <span>г. Владивосток, ул. Луговая, д. 74</span>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner" style="display:none">
+    Мы используем cookies для корректной работы сайта.
+    <a href="privacy.html">Подробнее</a>
+    <button class="cookie-btn" id="cookie-accept">ОК</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

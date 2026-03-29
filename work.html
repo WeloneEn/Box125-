@@ -1,27 +1,31 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Услуги и цены | Автомастерская У попи</title>
-  <meta name="description" content="Услуги и цены автомастерской У попи: диагностика, ходовая, тормоза, двигатель, техобслуживание. Запись во Владивостоке." />
+  <title>Услуги и цены | Бокс 125</title>
+  <meta name="description"
+    content="Услуги и цены автомастерской Бокс 125: диагностика, ходовая, тормоза, двигатель, техобслуживание. Запись во Владивостоке." />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Услуги и цены | Автомастерская У попи" />
+  <meta property="og:title" content="Услуги и цены | Бокс 125" />
   <meta property="og:description" content="Честная смета, гарантия и прозрачный процесс ремонта." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="body-bg"></div>
 
   <header class="nav">
-    <div class="logo">У попи</div>
+    <a href="index.html" class="logo"><span class="logo-text">Бокс <span class="logo-accent">125</span></span></a>
     <nav>
-      <a href="index.html">Главная</a>
       <a href="work.html" class="active">Услуги</a>
       <a href="about.html">О мастерской</a>
       <a href="testimonials.html">Отзывы</a>
@@ -32,68 +36,8 @@
   <main class="section" style="padding-top: 110px;">
     <div class="panel reveal in-view">
       <h2>Услуги и запись</h2>
-      <p>Формат работы как у современных международных сервисов: входная диагностика, согласование сметы, ремонт и финальный контроль.</p>
-
-      <div class="car-stage" id="car-stage">
-        <div class="car-ui">
-          <div class="car-hint">Демонстрация бокса</div>
-          <div class="speed-badge">Скорость: <span id="car-speed">42</span> км/ч</div>
-          <button type="button" class="btn btn-ghost" id="car-turbo-btn">Включить турбо</button>
-          <button type="button" class="btn btn-ghost" id="car-night-btn">Ночной режим</button>
-        </div>
-
-        <div class="garage-grid"></div>
-        <div class="lift-post left" aria-hidden="true"></div>
-        <div class="lift-post right" aria-hidden="true"></div>
-        <div class="road"></div>
-
-        <div class="car-mascot" id="car-mascot" role="button" tabindex="0" aria-label="Машина. Нажмите, чтобы включить песню Rock You Like a Hurricane.">
-          <div class="car-shadow"></div>
-          <div class="headlight-beam"></div>
-          <svg class="car-svg" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="carPaint" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff8d3f" />
-                <stop offset="58%" stop-color="#ea6922" />
-                <stop offset="100%" stop-color="#c14309" />
-              </linearGradient>
-              <linearGradient id="carGlass" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#dff2ff" />
-                <stop offset="100%" stop-color="#8fb8da" />
-              </linearGradient>
-            </defs>
-            <path class="car-svg-body" d="M34 108C39 85 52 74 75 67L136 49C170 39 230 38 264 48L304 58C323 63 340 77 350 95L375 100C385 103 392 111 392 121V126C392 135 385 142 376 142H40C27 142 18 132 20 118C21 112 27 108 34 108Z" />
-            <path class="car-svg-side" d="M62 104L93 72C103 62 118 56 133 56H252C270 56 287 62 300 74L327 102Z" />
-            <path class="car-svg-window" d="M104 97L126 73C131 67 139 64 147 64H184V97Z" />
-            <path class="car-svg-window" d="M192 64H246C258 64 269 68 277 77L295 97H192Z" />
-            <path class="car-svg-window car-svg-window-small" d="M74 96L90 79C95 74 102 71 109 70L119 70L101 97Z" />
-            <rect class="car-svg-light car-svg-light-front" x="370" y="108" width="14" height="13" rx="3" />
-            <rect class="car-svg-light car-svg-light-rear" x="26" y="105" width="10" height="16" rx="3" />
-            <circle class="car-svg-wheel-base" cx="118" cy="140" r="26" />
-            <circle class="car-svg-wheel-base" cx="309" cy="140" r="26" />
-            <circle class="car-svg-wheel car-svg-wheel-rear" cx="118" cy="140" r="16" />
-            <circle class="car-svg-wheel car-svg-wheel-front" cx="309" cy="140" r="16" />
-            <path class="car-svg-handle" d="M210 95h20" />
-            <path class="car-svg-handle" d="M160 94h18" />
-          </svg>
-          <div class="exhaust">
-            <span class="smoke s1"></span>
-            <span class="smoke s2"></span>
-            <span class="smoke s3"></span>
-            <span class="smoke s4"></span>
-            <span class="smoke s5"></span>
-          </div>
-          <div class="sparks">
-            <span class="spark a"></span>
-            <span class="spark b"></span>
-            <span class="spark c"></span>
-            <span class="spark d"></span>
-          </div>
-        </div>
-      </div>
-      <audio id="car-song" preload="none">
-        <source src="./rock-you-like-a-hurricane.mp3" type="audio/mpeg" />
-      </audio>
+      <p>Формат работы как у современных международных сервисов: входная диагностика, согласование сметы, ремонт и
+        финальный контроль.</p>
     </div>
 
     <div class="panel reveal" style="margin-top: 18px;">
@@ -136,7 +80,8 @@
           <div class="price-row"><span>Стоимость</span><strong>от 2 000 ₽</strong></div>
         </article>
       </div>
-      <p class="tiny">Итоговая стоимость зависит от модели автомобиля и состояния узлов. Точная смета — после диагностики.</p>
+      <p class="tiny">Итоговая стоимость зависит от модели автомобиля и состояния узлов. Точная смета — после
+        диагностики.</p>
       <div class="cta-band">
         <p>Нужна быстрая оценка стоимости ремонта?</p>
         <a class="btn btn-primary" href="contact.html">Оставить заявку</a>
@@ -162,7 +107,21 @@
     </div>
   </main>
 
-  <footer class="footer">© Автомастерская «У попи», г. Владивосток, ул. Луговая, д. 74</footer>
+  <footer class="footer">
+    <div class="footer-top">© 2024–2026 Автомастерская «Бокс 125» (ИП Фамилия И.&nbsp;О. ИНН&nbsp;XXXXXXXXXX)</div>
+    <div class="footer-bottom">
+      <a href="privacy.html">Политика конфиденциальности</a>
+      <span>г. Владивосток, ул. Луговая, д. 74</span>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner" style="display:none">
+    Мы используем cookies для корректной работы сайта.
+    <a href="privacy.html">Подробнее</a>
+    <button class="cookie-btn" id="cookie-accept">ОК</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>

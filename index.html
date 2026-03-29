@@ -1,25 +1,25 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>У попи | Автомастерская во Владивостоке</title>
-  <meta name="description" content="Автомастерская У попи во Владивостоке: диагностика, ремонт двигателя, ходовой и тормозов. Адрес: ул. Луговая, 74. Запись по телефону +7 994 005 79 01." />
+  <title>Бокс 125 | Автомастерская во Владивостоке</title>
+  <meta name="description" content="Автомастерская Бокс 125 во Владивостоке: диагностика, ремонт двигателя, ходовой и тормозов. Адрес: ул. Луговая, 74. Запись по телефону +7 994 005 79 01." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#f26921" />
+  <meta name="theme-color" content="#1b8a9e" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="У попи | Автомастерская во Владивостоке" />
-  <meta property="og:description" content="Профессиональный ремонт и честная диагностика легковых авто. Владивосток, ул. Луговая, 74." />
+  <meta property="og:title" content="Бокс 125 | Автомастерская во Владивостоке" />
+  <meta property="og:description" content="Профессиональный ремонт и честная диагностика легковых авто. Бокс 125 — Владивосток, ул. Луговая, 74." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    "name": "Автомастерская У попи",
+    "name": "Автомастерская Бокс 125",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Владивосток",
@@ -27,7 +27,7 @@
       "addressCountry": "RU"
     },
     "telephone": "+7 994 005 79 01",
-    "email": "jadeloomwear@gmail.com",
+    "email": "box125@gmail.com",
     "url": "index.html",
     "openingHours": "Mo-Sa 09:00-19:00"
   }
@@ -37,9 +37,8 @@
   <div class="body-bg"></div>
   <div class="scene">
     <header class="nav">
-      <div class="logo">У попи</div>
+      <a href="index.html" class="logo"><span class="logo-text">Бокс <span class="logo-accent">125</span></span></a>
       <nav>
-        <a href="index.html" class="active">Главная</a>
         <a href="work.html">Услуги</a>
         <a href="about.html">О мастерской</a>
         <a href="testimonials.html">Отзывы</a>
@@ -49,7 +48,7 @@
 
     <main class="hero">
       <div class="reveal in-view">
-        <h1 class="title">Автосервис <span class="accent">«У попи»</span></h1>
+        <h1 class="title">Автосервис <span class="accent">«Бокс 125»</span></h1>
         <p class="lead">
           Профессиональный ремонт, честная диагностика и обслуживание легковых авто.
           Работаем во Владивостоке: ул. Луговая, д. 74.
@@ -98,8 +97,10 @@
               <input id="home-date" name="date" type="date" />
             </div>
           </div>
-          <button class="btn btn-primary" type="submit">Отправить заявку</button>
-          <p class="form-note">После отправки откроется ваш почтовый клиент с заполненной заявкой.</p>
+          <button class="btn btn-primary" type="submit" name="messengertarget" value="whatsapp" id="submit-whatsapp">Отправить в WhatsApp</button>
+          <button class="btn btn-ghost" type="submit" name="messengertarget" value="telegram" id="submit-telegram" style="margin-top:8px;width:100%">Отправить в Telegram</button>
+          <p class="form-note">Заявка откроется в выбранном мессенджере с готовым текстом.</p>
+          <p class="legal-hint">Нажимая кнопку, вы даете согласие на <a href="privacy.html" class="legal-link">обработку персональных данных</a>.</p>
         </form>
       </div>
     </main>
@@ -108,18 +109,21 @@
       <div class="panel">
         <h2>Основные направления</h2>
         <div class="grid">
-          <article class="card">
+          <a href="work.html" class="card card-link">
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
             <h3>Диагностика</h3>
             <p>Компьютерная и механическая проверка узлов перед ремонтом.</p>
-          </article>
-          <article class="card">
+          </a>
+          <a href="work.html" class="card card-link">
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             <h3>Двигатель</h3>
             <p>Текущий и капитальный ремонт, устранение утечек, замена цепей и ремней.</p>
-          </article>
-          <article class="card">
+          </a>
+          <a href="work.html" class="card card-link">
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             <h3>Ходовая</h3>
             <p>Ремонт подвески, рулевого управления и тормозной системы.</p>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -139,7 +143,19 @@
       </div>
     </section>
 
-    <footer class="footer">© Автомастерская «У попи», г. Владивосток, ул. Луговая, д. 74</footer>
+    <footer class="footer">
+      <div class="footer-top">© 2024–2026 Автомастерская «Бокс 125» (ИП Фамилия И.&nbsp;О. ИНН&nbsp;XXXXXXXXXX)</div>
+      <div class="footer-bottom">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <span>г. Владивосток, ул. Луговая, д. 74</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="cookie-banner" id="cookie-banner" style="display:none">
+    Мы используем cookies для корректной работы сайта.
+    <a href="privacy.html">Подробнее</a>
+    <button class="cookie-btn" id="cookie-accept">ОК</button>
   </div>
 
   <script src="script.js"></script>

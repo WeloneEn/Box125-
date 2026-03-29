@@ -1,10 +1,12 @@
-﻿(function () {
-  const THEME_KEY = "upopi-theme";
+(function () {
+  const THEME_KEY = "box125-theme";
+  const darkMQ = window.matchMedia("(prefers-color-scheme: dark)");
+
   const savedTheme = localStorage.getItem(THEME_KEY);
   const initialTheme =
     savedTheme === "dark" || savedTheme === "light"
       ? savedTheme
-      : window.matchMedia("(prefers-color-scheme: dark)").matches
+      : darkMQ.matches
         ? "dark"
         : "light";
 
@@ -12,16 +14,35 @@
 
   const nav = document.querySelector(".nav");
   let themeToggle = null;
+  let mobileThemeToggle = null;
 
-  const applyTheme = (theme) => {
-    const dark = theme === "dark";
-    document.body.classList.toggle("theme-dark", dark);
-    localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+  const updateToggleLabels = (dark) => {
+    const label = dark ? "Светлая тема" : "Тёмная тема";
     if (themeToggle) {
-      themeToggle.textContent = dark ? "Светлая тема" : "Темная тема";
+      themeToggle.textContent = label;
       themeToggle.setAttribute("aria-pressed", String(dark));
     }
+    if (mobileThemeToggle) {
+      mobileThemeToggle.textContent = label;
+    }
   };
+
+  const applyTheme = (theme, saveToStorage = true) => {
+    const dark = theme === "dark";
+    document.body.classList.toggle("theme-dark", dark);
+    if (saveToStorage) {
+      localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+    }
+    updateToggleLabels(dark);
+  };
+
+  /* Реагируем на изменение темы ОС (день/ночь) в реальном времени */
+  darkMQ.addEventListener("change", (e) => {
+    const userOverride = localStorage.getItem(THEME_KEY);
+    if (!userOverride) {
+      applyTheme(e.matches ? "dark" : "light", false);
+    }
+  });
 
   if (nav) {
     themeToggle = document.createElement("button");
@@ -31,7 +52,7 @@
       applyTheme(document.body.classList.contains("theme-dark") ? "light" : "dark");
     });
     nav.appendChild(themeToggle);
-    applyTheme(document.body.classList.contains("theme-dark") ? "dark" : "light");
+    applyTheme(document.body.classList.contains("theme-dark") ? "dark" : "light", !!savedTheme);
   }
 
   const buildMobileNav = () => {
@@ -84,6 +105,16 @@
       });
     });
 
+    /* Кнопка темы в мобильном меню */
+    mobileThemeToggle = document.createElement("button");
+    mobileThemeToggle.type = "button";
+    mobileThemeToggle.className = "mobile-theme-toggle";
+    mobileThemeToggle.textContent = document.body.classList.contains("theme-dark") ? "Светлая тема" : "Тёмная тема";
+    mobileThemeToggle.addEventListener("click", () => {
+      applyTheme(document.body.classList.contains("theme-dark") ? "light" : "dark");
+    });
+    mobile.appendChild(mobileThemeToggle);
+
     document.body.appendChild(backdrop);
     document.body.appendChild(mobile);
 
@@ -125,10 +156,10 @@
     const panel = document.createElement("aside");
     panel.className = "quick-contact-panel";
     panel.innerHTML = `
-      <div class="quick-contact-panel-title">У попи</div>
+      <div class="quick-contact-panel-title">Бокс 125</div>
       <a class="quick-contact-panel-link" href="tel:+79940057901">Телефон: +7 994 005 79 01</a>
       <a class="quick-contact-panel-link" href="https://t.me/Welika_00" target="_blank" rel="noopener noreferrer">Телеграм: @Welika_00</a>
-      <a class="quick-contact-panel-link" href="mailto:jadeloomwear@gmail.com">Почта: jadeloomwear@gmail.com</a>
+      <a class="quick-contact-panel-link" href="mailto:box125@gmail.com">Почта: box125@gmail.com</a>
       <a class="quick-contact-panel-link" href="contact.html">Адрес: г. Владивосток, ул. Луговая, д. 74</a>
       <a class="quick-contact-panel-link" href="work.html">Услуги и цены</a>
     `;
@@ -163,11 +194,15 @@
 
   buildQuickContactDock();
 
+  const PHONE_WA = "79940057901";
+  const TG_USER = "Welika_00";
+
   const bookingForms = Array.from(document.querySelectorAll("[data-booking-form]"));
-  const encode = (value) => encodeURIComponent((value || "").trim());
+
   bookingForms.forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+
       const fd = new FormData(form);
       const name = String(fd.get("name") || "").trim();
       const phone = String(fd.get("phone") || "").trim();
@@ -176,107 +211,33 @@
       const comment = String(fd.get("comment") || "").trim();
 
       if (!name || !phone) {
-        const firstInput = form.querySelector("input[name='name']") || form.querySelector("input[name='phone']");
-        if (firstInput) firstInput.focus();
+        const firstEmpty = form.querySelector("input[name='name']") || form.querySelector("input[name='phone']");
+        if (firstEmpty) firstEmpty.focus();
         return;
       }
 
-      const subject = encode(`Заявка на сервис — ${service || "Автомастерская У попи"}`);
-      const body = encode(
-        [
-          "Новая заявка с сайта:",
-          `Имя: ${name}`,
-          `Телефон: ${phone}`,
-          `Услуга: ${service || "Не указана"}`,
-          `Желаемая дата: ${date || "Не указана"}`,
-          `Комментарий: ${comment || "Нет"}`
-        ].join("\n")
-      );
-      window.location.href = `mailto:jadeloomwear@gmail.com?subject=${subject}&body=${body}`;
+      const msgLines = [
+        `Заявка с сайта Бокс 125`,
+        `Имя: ${name}`,
+        `Телефон: ${phone}`,
+        `Услуга: ${service || "Не указана"}`,
+        `Дата: ${date || "Не указана"}`,
+        comment ? `Комментарий: ${comment}` : ""
+      ].filter(Boolean).join("\n");
+
+      const submitter = event.submitter;
+      const target = (submitter && submitter.value) || "whatsapp";
+
+      let url;
+      if (target === "telegram") {
+        url = `https://t.me/${TG_USER}?text=${encodeURIComponent(msgLines)}`;
+      } else {
+        url = `https://wa.me/${PHONE_WA}?text=${encodeURIComponent(msgLines)}`;
+      }
+
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   });
-
-  const turboBtn = document.getElementById("car-turbo-btn");
-  const nightBtn = document.getElementById("car-night-btn");
-  const carStage = document.getElementById("car-stage");
-  const carHint = document.querySelector(".car-hint");
-  const speedValue = document.getElementById("car-speed");
-  let speedTimer = null;
-
-  const updateSpeed = () => {
-    if (!speedValue || !carStage) return;
-    const turbo = carStage.classList.contains("turbo");
-    const min = turbo ? 86 : 38;
-    const max = turbo ? 128 : 62;
-    speedValue.textContent = String(Math.floor(min + Math.random() * (max - min + 1)));
-  };
-
-  if (carStage) {
-    updateSpeed();
-    speedTimer = window.setInterval(updateSpeed, 1100);
-  }
-
-  if (turboBtn && carStage) {
-    turboBtn.addEventListener("click", () => {
-      const enabled = carStage.classList.toggle("turbo");
-      turboBtn.textContent = enabled ? "Отключить турбо" : "Включить турбо";
-      if (carHint) {
-        carHint.textContent = enabled ? "Турбо-тест на роликах" : "Демонстрация бокса";
-      }
-      updateSpeed();
-    });
-  }
-
-  if (nightBtn && carStage) {
-    nightBtn.addEventListener("click", () => {
-      const enabled = carStage.classList.toggle("night");
-      nightBtn.textContent = enabled ? "Дневной режим" : "Ночной режим";
-      if (carHint) {
-        carHint.textContent = enabled ? "Ночная диагностика света" : "Демонстрация бокса";
-      }
-    });
-  }
-
-  const carMascot = document.getElementById("car-mascot");
-  const carSong = document.getElementById("car-song");
-  const playCarSong = () => {
-    if (!carMascot || !carSong) return;
-    if (!carSong.getAttribute("src") && !carSong.querySelector("source")?.getAttribute("src")) {
-      return;
-    }
-
-    if (carSong.paused) {
-      carSong.currentTime = 0;
-      carSong.play().then(() => {
-        carMascot.classList.add("car-song-active");
-        if (carHint) carHint.textContent = "Сейчас играет: Rock You Like a Hurricane";
-      }).catch(() => {
-        if (carHint) carHint.textContent = "Добавьте файл rock-you-like-a-hurricane.mp3 в папку сайта";
-      });
-      return;
-    }
-
-    carSong.pause();
-    carMascot.classList.remove("car-song-active");
-    if (carHint) carHint.textContent = carStage?.classList.contains("night") ? "Ночная диагностика света" : "Демонстрация бокса";
-  };
-
-  if (carMascot) {
-    carMascot.addEventListener("click", playCarSong);
-    carMascot.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        playCarSong();
-      }
-    });
-  }
-
-  if (carSong) {
-    carSong.addEventListener("ended", () => {
-      if (carMascot) carMascot.classList.remove("car-song-active");
-      if (carHint) carHint.textContent = carStage?.classList.contains("night") ? "Ночная диагностика света" : "Демонстрация бокса";
-    });
-  }
 
   const showPhoneBtn = document.getElementById("show-phone");
   const phoneLink = document.getElementById("phone-link");
@@ -306,11 +267,20 @@
     document.body.classList.add("page-ready");
   });
 
-  window.addEventListener("beforeunload", () => {
-    if (speedTimer) window.clearInterval(speedTimer);
-    if (carSong) {
-      carSong.pause();
-      carSong.currentTime = 0;
-    }
-  });
+  /* ── Cookie banner ── */
+  const COOKIE_KEY = "box125-cookies-ok";
+  const cookieBanner = document.getElementById("cookie-banner");
+  const cookieAccept = document.getElementById("cookie-accept");
+
+  if (cookieBanner && !localStorage.getItem(COOKIE_KEY)) {
+    cookieBanner.style.display = "flex";
+  }
+
+  if (cookieAccept) {
+    cookieAccept.addEventListener("click", () => {
+      localStorage.setItem(COOKIE_KEY, "1");
+      cookieBanner.style.display = "none";
+    });
+  }
+
 })();
